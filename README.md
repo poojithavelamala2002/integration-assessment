@@ -10,7 +10,8 @@ This project implements integrations for multiple platforms such as **HubSpot**,
 - Token storage and management using Redis  
 - API endpoints for fetching integration data  
 - Modular backend architecture with FastAPI  
-- React frontend for interactive integration management  
+- React frontend for interactive integration management
+- Note: Authorization for Airtable and Notion is planned but not yet implemented 
 
 ---
 
@@ -152,8 +153,10 @@ Backend retrieves data from HubSpot APIs and returns it in a unified format.
 
 ### ✅ Notes
 
-Ensure Redis is running before starting the backend.
+- Ensure Redis is running before starting the backend.
 
-Store sensitive credentials in .env and never push them to Git.
+- Store sensitive credentials in .env and never push them to Git.
+-  Currently, only HubSpot OAuth 2.0 authorization is implemented. Airtable and Notion integration will be added later.
+  
 
 
