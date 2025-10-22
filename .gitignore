@@ -1,0 +1,27 @@
+# Node modules
+frontend/node_modules/
+backend/node_modules/
+
+dist/
+.env
+
+
+# Python environment (if any)
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+
+# VSCode settings (optional)
+.vscode/
+
+# Ignore Python virtual environments
+venv/
+backend/venv/
+
+# Byte-compiled / compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
