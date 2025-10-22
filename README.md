@@ -76,38 +76,40 @@ REDIS_PORT=6379
 
 
 💡 Replace the placeholder values with your actual HubSpot credentials.
+```
 ---
-🐍 Backend Setup (FastAPI)
-
+## 🐍 Backend Setup (FastAPI)
 Open a terminal inside the backend folder.
 
-Create and activate a virtual environment:
-
+1. Create and activate a virtual environment:
+```
 python -m venv venv
 venv\Scripts\activate    # Windows
 # OR
 source venv/bin/activate # macOS/Linux
+```
 
-
-Install dependencies:
+2. Install dependencies:
 pip install -r requirements.txt
-Start Redis (ensure it’s running at 127.0.0.1:6379):
+
+3. Start Redis (ensure it’s running at 127.0.0.1:6379):
 ```
 bash
 redis-server
-Run the FastAPI backend:
 ```
+4. Run the FastAPI backend:
+
 ```
 bash
 uvicorn main:app --reload
+```
 Backend runs by default at http://localhost:8000
 
-8000
-
-🖥️ Frontend Setup (React)
+---
+### 🖥️ Frontend Setup (React)
 
 Open a new terminal and navigate to the frontend folder:
-``
+```
 cd frontend
 npm install
 npm start
@@ -120,48 +122,38 @@ Make sure the backend (port 8000) and frontend (port 3000) are both running simu
 
 ### 🔄 OAuth 2.0 Flow (HubSpot)
 
-Authorize User
+1. Authorize User
 
 Frontend calls:
-
+```
 GET /integrations/hubspot/authorize?user_id=<USER_ID>&org_id=<ORG_ID>
-
+```
 
 The backend returns an authorize_url.
 
-User Consent
+2. User Consent
 
-User logs into HubSpot and grants access.
-
-HubSpot redirects to:
-
+User logs into HubSpot and grants access.HubSpot redirects to:
+```
 /integrations/hubspot/oauth2callback
+```
 
+3. Token Exchange
 
-Token Exchange
+Backend exchanges the code for access and refresh tokens.Tokens are stored securely in Redis.
 
-Backend exchanges the code for access and refresh tokens.
-
-Tokens are stored securely in Redis.
-
-Data Fetch
+4. Data Fetch
 
 Frontend fetches data:
-
+```
 GET /integrations/hubspot/items?user_id=<USER_ID>&org_id=<ORG_ID>
-
-
+```
 Backend retrieves data from HubSpot APIs and returns it in a unified format.
 
-🧠 API Endpoints Summary
-Endpoint	Method	Description
-/integrations/hubspot/authorize	GET	Initiates OAuth flow and returns authorization URL
-/integrations/hubspot/oauth2callback	GET	Handles HubSpot redirect and token exchange
-/integrations/hubspot/items	GET	Fetches HubSpot items (contacts, deals, etc.)
+### ✅ Notes
 
-### screenshots
-## 🧩 Integration Dashboard (Frontend)
-![Integration Dashboard](./images/dashboard.png)
+Ensure Redis is running before starting the backend.
 
-### 🔐 HubSpot OAuth2 Login
-![HubSpot OAuth2 Login](./images/hubspot_auth.png)
+Store sensitive credentials in .env and never push them to Git.
+
+
